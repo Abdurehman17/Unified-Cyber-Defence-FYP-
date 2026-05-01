@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCDS Enterprise | Secure Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #f0f2f5;       
+            --accent-blue: #0056b3;   
+            --accent-blue-hover: #004494;
+            --border-color: #dfe3e8;  
+        }
+        * { box-sizing: border-box; border-radius: 0 !important; }
+        body {
+            background-color: var(--bg-body);
+            font-family: 'Roboto', sans-serif;
+            height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0;
+        }
+        .login-container {
+            width: 100%; max-width: 400px; background-color: white; border: 1px solid var(--border-color); padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .brand-header { text-align: center; margin-bottom: 30px; color: var(--accent-blue); }
+        .brand-header i { font-size: 2.5rem; margin-bottom: 10px; }
+        .brand-header h2 { font-size: 1.5rem; font-weight: 700; margin: 0; color: #1a1a1a; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; }
+        input { width: 100%; padding: 12px; border: 1px solid var(--border-color); background-color: #f8f9fa; font-size: 1rem; outline: none; }
+        input:focus { border-color: var(--accent-blue); background-color: white; }
+        .btn-login {
+            width: 100%; padding: 12px; background-color: var(--accent-blue); color: white; border: none; font-weight: 600; font-size: 1rem; text-transform: uppercase; cursor: pointer; margin-top: 10px;
+        }
+        .btn-login:hover { background-color: var(--accent-blue-hover); }
+        .alert-error { background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; margin-bottom: 20px; font-size: 0.9rem; text-align: center; display: block; }
+        .footer-text { text-align: center; margin-top: 20px; font-size: 0.8rem; color: #adb5bd; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="brand-header"><i class="fas fa-shield-alt"></i><h2>UCDS Enterprise</h2><p>Authorized Access Only</p></div>
+        {% if error %}<div class="alert-error"><i class="fas fa-exclamation-circle"></i> {{ error }}</div>{% endif %}
+        <form action="/login" method="POST">
+            <div class="form-group"><label>Operator ID</label><input type="text" name="username" placeholder="admin" required autofocus></div>
+            <div class="form-group"><label>Password</label><input type="password" name="password" placeholder="••••••••" required></div>
+            <button type="submit" class="btn-login">Authenticate</button>
+        </form>
+        <div class="footer-text">System requires Level 3 Security Clearance.<br>Protected by UCDS Firewall.</div>
+    </div>
+</body>
+</html>

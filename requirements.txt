@@ -1,0 +1,5 @@
+flask
+scapy
+requests
+fpdf
+psutil
